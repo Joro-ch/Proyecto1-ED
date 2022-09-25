@@ -8,26 +8,40 @@ template<class T>
 
 class Collection {
 public:
+    
+    // ------------------------------------------------------------
+    
     virtual bool isEmpty() {
         return true;
     }
     
-    virtual int size() = 0;
-    virtual T get(int i) = 0;
+    // ------------------------------------------------------------
     
-    virtual Collection set(int i, T v) = 0;
-    virtual Collection swap(int i, int j) = 0;
-    virtual Collection add(T v)  = 0;
-    virtual Collection add(int i, T v)  = 0;
-    virtual T remove() = 0;
-    virtual T remove(int i) = 0;
+    virtual int size() = 0;
+    virtual T* get(int i) = 0;
+
+    // ------------------------------------------------------------
+    
+    virtual Collection* set(int i, T* v) = 0;
+    virtual Collection* swap(int i, int j) = 0;
+    virtual Collection* add(T* v)  = 0;
+    virtual Collection* add(int i, T* v)  = 0;
+    
+    // ------------------------------------------------------------
+    
+    virtual T* remove() = 0;
+    virtual T* remove(int i) = 0;
+    
+    // ------------------------------------------------------------
     
     virtual Collection clear() {
         while(!isEmpty)
         {
             remove();
         }
+        return *this;
     }
+    
 };
 
 #endif 

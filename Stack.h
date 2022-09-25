@@ -6,9 +6,14 @@ template<class T>
 
 class Stack {
 public:
+    
+    // ------------------------------------------------------------
+    
     Stack() {
-        v = new LinkedList<>();
+        v = new LinkedList();
     }
+    
+    // ------------------------------------------------------------
 
     bool isEmpty() {
         return v.isEmpty();
@@ -33,13 +38,11 @@ public:
     T pop() {
         return v.remove();
     }
-
-//    string toString() {
-//        return v.toString();
-//    }
+    
+    // ------------------------------------------------------------
 
 private:
-    Collection v;
+    Collection* v;
 };
 
 #endif 

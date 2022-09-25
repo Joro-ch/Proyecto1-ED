@@ -7,6 +7,9 @@ template<class T>
 
 class Link {
 public:
+    
+    // ------------------------------------------------------------
+    
     Link(Link next, T info) {
         this.next = next;
         this.info = info;
@@ -17,6 +20,9 @@ public:
     }
     
     virtual ~Link();
+    
+    // ------------------------------------------------------------
+    
 private:
     Link next;
     T info;

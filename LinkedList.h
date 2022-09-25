@@ -4,6 +4,7 @@
 #include<cassert>
 #include<sstream>
 #include"Link.h"
+#include"Collection.h"
 using namespace std;
 
 template<class T>
@@ -11,20 +12,27 @@ template<class T>
 class LinkedList : public Collection {
 public:
     
+    // ------------------------------------------------------------
+    
     LinkedList() {
         this.k = 0;
         this.first = NULL;
     }
     
-    LinkedList(const LinkedList& orig);
-    virtual ~LinkedList();
+    LinkedList(const LinkedList& orig) {
+    }
+    
+    virtual ~LinkedList() {
+    }
+    
+    // ------------------------------------------------------------
     
     int size() {
         return k;
     }
     
-    T get(int i) {
-        T r = NULL;
+    T* get(int i) {
+        T* r = NULL;
         if ((0 <= i) && (i < size())) {
             Link current = first;
             int p = 0;
@@ -40,7 +48,9 @@ public:
         return r;
     }
     
-    Collection set(int i, T v) { 
+    // ------------------------------------------------------------
+    
+    Collection* set(int i, T v) { 
         if ((0 <= i) && (i < size())) {
             Link current = first;
             int p = 0;
@@ -56,10 +66,10 @@ public:
         }
     }
     
-    Collection swap(int i, int j) {
+    Collection* swap(int i, int j) {
         if (((0 <= i) && (i < size())) && ((0 <= j) && (j < size()))) {
-            T o1 = get(i);
-            T o2 = get(j);
+            T* o1 = get(i);
+            T* o2 = get(j);
             set(i, o2);
             set(j, o1);
             return this;
@@ -68,17 +78,17 @@ public:
         }
     }
     
-    Collection add(T v) { 
+    Collection* add(T v) { 
         return add(0, v);
     }
     
-    Collection add(int i, T v) {
+    Collection* add(int i, T v) {
         if (v != NULL) {
             int m = ((0 <= i) && (i < size())) ? i : size();
             if (m == 0) {
                 first = new Link(first, v);
             } else {
-                Link<T> current = first;
+                Link* current = first;
                 int p = 0;
                 while ((current != NULL) && (p < (m - 1))) {
                     current = current.next;
@@ -94,12 +104,14 @@ public:
         return this;
     }
     
-    T remove() {
+    // ------------------------------------------------------------
+    
+    T* remove() {
         return remove(0);
     }
     
-    T remove(int i) {
-        T r = NULL;
+    T* remove(int i) {
+        T* r = NULL;
         if (!isEmpty()) {
             if (i == 0) {
                 r = first.info;
@@ -120,23 +132,26 @@ public:
         return r;
     }
     
+    // ------------------------------------------------------------
+    
     string toString() { 
-//        StringBuilder r = new StringBuilder("{");
-//        Link current = first;
-//        while (current != null) {
-//            r.append(current.info);
-//            current = current.next;
-//            if (current != null) {
-//                r.append(", ");
-//            }
-//        }
-//        r.append("}");
-        return "";
+        stringstream s;
+        Link* current = first;
+        while (current != NULL) {
+            s << current.info;
+            current = current.next;
+            if (current != NULL) {
+                s << ", ";
+            }
+        }
+        return s.str();
     }
+    
+    // ------------------------------------------------------------
     
 private:
     int k;
-    Link first;
+    Link* first;
 };
 
 #endif 
