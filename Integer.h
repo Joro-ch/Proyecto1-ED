@@ -1,9 +1,6 @@
 #ifndef INTEGER_H
 #define INTEGER_H
-#include<iostream>
-#include<sstream>
 #include"Stack.h"
-using namespace std;
 
 #define ZERO 0;
 #define ONE 1;
@@ -60,7 +57,7 @@ public:
     // ------------------------------------------------------------
     
 private:
-    Collection* v;
+    Stack<int>* v;
 };
 
 #endif

@@ -10,22 +10,24 @@ public:
     
     // ------------------------------------------------------------
     
-    Link(Link next, T info) {
+    Link(Link<T>* next, T* info) {
         this.next = next;
         this.info = info;
     }
 
-    Link (T info) {
+    Link (T* info) {
         this(NULL, info);
     }
     
-    virtual ~Link();
+    virtual ~Link()
+    {
+    }
     
     // ------------------------------------------------------------
     
 private:
-    Link next;
-    T info;
+    Link<T>* next;
+    T* info;
 };
 
 #endif 

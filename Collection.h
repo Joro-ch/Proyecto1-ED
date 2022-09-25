@@ -10,9 +10,9 @@ class Collection {
 public:
     
     // ------------------------------------------------------------
-    
+
     virtual bool isEmpty() {
-        return true;
+        return size() == 0;
     }
     
     // ------------------------------------------------------------
@@ -22,10 +22,10 @@ public:
 
     // ------------------------------------------------------------
     
-    virtual Collection* set(int i, T* v) = 0;
-    virtual Collection* swap(int i, int j) = 0;
-    virtual Collection* add(T* v)  = 0;
-    virtual Collection* add(int i, T* v)  = 0;
+    virtual Collection<T>* set(int i, T* v) = 0;
+    virtual Collection<T>* swap(int i, int j) = 0;
+    virtual Collection<T>* add(T* v)  = 0;
+    virtual Collection<T>* add(int i, T* v)  = 0;
     
     // ------------------------------------------------------------
     
@@ -34,8 +34,8 @@ public:
     
     // ------------------------------------------------------------
     
-    virtual Collection clear() {
-        while(!isEmpty)
+    virtual Collection<T>* clear() {
+        while(!isEmpty())
         {
             remove();
         }

@@ -10,7 +10,7 @@ public:
     // ------------------------------------------------------------
     
     Stack() {
-        v = new LinkedList();
+        v = new LinkedList<T>();
     }
     
     // ------------------------------------------------------------
@@ -23,11 +23,11 @@ public:
         return v.size();
     }
 
-    T top() {
+    T* top() {
         return v.get(0);
     }
 
-    void push(T e) {
+    void push(T* e) {
         if (e != NULL) {
             v.add(e);
         } else {
@@ -35,14 +35,14 @@ public:
         }
     }
 
-    T pop() {
+    T* pop() {
         return v.remove();
     }
     
     // ------------------------------------------------------------
 
 private:
-    Collection* v;
+    Collection<T>* v;
 };
 
 #endif 
