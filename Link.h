@@ -19,6 +19,11 @@ public:
         this(NULL, info);
     }
     
+    Link(Link<T>* o) {
+        this->next = o->getNext();
+        this->info = o->getInfo();
+    }
+    
     virtual ~Link()
     {
     }

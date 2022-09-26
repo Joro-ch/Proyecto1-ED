@@ -10,11 +10,26 @@ public:
     // ------------------------------------------------------------
     
     Stack() {
-        v = new LinkedList<T>();
+        this->v = new LinkedList<T>();
+    }
+    
+    Stack(Stack<T>* o) {
+        // this->v = new LinkedList<T>(o->getLista());
     }
     
     virtual ~Stack()
     {
+    }
+    
+    // ------------------------------------------------------------
+    
+    Stack* setLista(Collection<T>* v) {
+        this->v = v;
+        return this;
+    }
+    
+    Collection<T>* getLista() {
+        return v;
     }
     
     // ------------------------------------------------------------

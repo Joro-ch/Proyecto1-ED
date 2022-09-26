@@ -18,8 +18,19 @@ public:
         k = 0;
     }
     
-    Array(const Array& orig){}
-    virtual ~Array(){}
+    Array(Array* o) {
+        t = o->capacity();
+        e = new T*[t];
+        
+        for(int i = 0; i < o->size(); i++)
+        {
+            e[i] = o->get(i); 
+        }
+    }
+    
+    virtual ~Array(){
+        
+    }
     
     // ------------------------------------------------------------
     

@@ -12,43 +12,48 @@ public:
     // ------------------------------------------------------------
     
     Integer();
-    Integer(const Integer& orig);
+    Integer(Integer*);
     virtual ~Integer();
     
     // ------------------------------------------------------------
     
-    Integer* suma();
-    Integer* resta();
-    Integer* multiplicacion();
-    Integer* division();
+    Integer* setLista(Integer*);
+    Stack<Array<int>*>* getLista();
     
     // ------------------------------------------------------------
     
-    void funcionFactorial(); 
-    void Fibonacci();
-    void combinaciones();
+    Integer* sumar(Integer*);
+    Integer* restar(Integer*);
+    Integer* multiplicar(Integer*);
+    Integer* dividir(Integer*);
     
     // ------------------------------------------------------------
     
-    Integer& operator + (const Integer&);
-    Integer& operator - (const Integer&);  
-    Integer& operator * (const Integer&);  
-    Integer& operator / (const Integer&);
+    Integer* funcionFactorial(); 
+    Integer* Fibonacci();
+    Integer* combinaciones();
     
-    Integer& operator = (const Integer&);
-    Integer& operator += (const Integer&);  
-    Integer& operator -= (const Integer&);  
-    Integer& operator *= (const Integer&); 
-    Integer& operator /= (const Integer&);
+    // ------------------------------------------------------------
     
-    Integer& operator == (const Integer&);
-    Integer& operator != (const Integer&);  
-    Integer& operator < (const Integer&);  
-    Integer& operator <= (const Integer&); 
-    Integer& operator > (const Integer&);
-    Integer& operator >= (const Integer&);
+    Integer* operator + (Integer*);
+    Integer* operator - (Integer*);  
+    Integer* operator * (Integer*);  
+    Integer* operator / (Integer*);
     
-    Integer& operator << (const Integer&); 
+    Integer* operator = (Integer*);
+    Integer* operator += (Integer*);  
+    Integer* operator -= (Integer*);  
+    Integer* operator *= (Integer*); 
+    Integer* operator /= (Integer*);
+    
+    Integer* operator == (Integer*);
+    Integer* operator != (Integer*);  
+    Integer* operator < (Integer*);  
+    Integer* operator <= (Integer*); 
+    Integer* operator > (Integer*);
+    Integer* operator >= (Integer*);
+    
+    Integer* operator << (Integer*); 
     
     // ------------------------------------------------------------
     

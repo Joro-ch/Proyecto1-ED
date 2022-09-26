@@ -19,10 +19,32 @@ public:
         this->first = NULL;
     }
     
-    LinkedList(const LinkedList<T>& orig) {
+    LinkedList(LinkedList<T>* o) {
+        this->k = o->getK();
+        this->first = o->getFirst();
     }
     
     virtual ~LinkedList() {
+    }
+    
+    // ------------------------------------------------------------
+    
+    LinkedList* setFirst(Link<T>* first){
+        this->first = first;
+        return this;
+    } 
+    
+    LinkedList* setK(int k){
+        this->k = k;
+        return this;
+    }
+    
+    Link<T>* getFirst(){
+        return first;
+    }
+    
+    int getK(){
+        return k;
     }
     
     // ------------------------------------------------------------
