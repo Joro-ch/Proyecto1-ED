@@ -2,7 +2,7 @@
 
 Integer::Integer()
 {
-    
+    v = new Stack<Array<int>*>();
 }
 Integer::Integer(const Integer& orig){}
 Integer::~Integer(){}

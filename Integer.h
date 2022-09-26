@@ -1,6 +1,7 @@
 #ifndef INTEGER_H
 #define INTEGER_H
 #include"Stack.h"
+#include"Array.h"
 
 #define ZERO 0;
 #define ONE 1;
@@ -57,7 +58,7 @@ public:
     // ------------------------------------------------------------
     
 private:
-    Stack<int>* v;
+    Stack<Array<int>*>* v;
 };
 
 #endif

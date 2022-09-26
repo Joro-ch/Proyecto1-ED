@@ -11,16 +11,36 @@ public:
     // ------------------------------------------------------------
     
     Link(Link<T>* next, T* info) {
-        this.next = next;
-        this.info = info;
+        this->next = next;
+        this->info = info;
     }
-
+    
     Link (T* info) {
         this(NULL, info);
     }
     
     virtual ~Link()
     {
+    }
+    
+    void setNext(Link<T>* next)
+    {
+        this->next = next;
+    }
+    
+    void setInfo(T* info)
+    {
+        this->info = info;
+    }
+    
+    Link<T>* getNext()
+    {
+        return next;
+    }
+    
+    T* getInfo()
+    {
+        return info;
     }
     
     // ------------------------------------------------------------

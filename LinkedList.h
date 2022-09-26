@@ -15,8 +15,8 @@ public:
     // ------------------------------------------------------------
     
     LinkedList() {
-        this.k = 0;
-        this.first = NULL;
+        this->k = 0;
+        this->first = NULL;
     }
     
     LinkedList(const LinkedList<T>& orig) {
@@ -37,11 +37,11 @@ public:
             Link<T>* current = first;
             int p = 0;
             while ((current != NULL) && (p < i)) {
-                current = current.next;
+                current = current->getNext();
                 p++;
             }
             assert (current != NULL);
-            r = (T) current.info;
+            r = current->getInfo();
         } else {
             throw new exception();
         }
@@ -52,14 +52,14 @@ public:
     
     Collection<T>* set(int i, T* v) { 
         if ((0 <= i) && (i < size())) {
-            Link<T> current = first;
+            Link<T>* current = first;
             int p = 0;
             while ((current != NULL) && (p < i)) {
-                current = current.next;
+                current = current->getNext();
                 p++;
             }
             assert (current != NULL);
-            current.info = v;
+            current->setInfo(v);
             return this;
         } else {
             throw new exception();
@@ -91,17 +91,17 @@ public:
                 Link<T>* current = first;
                 int p = 0;
                 while ((current != NULL) && (p < (m - 1))) {
-                    current = current.next;
+                    current = current->getNext();
                     p++;
                 }
                 assert (current != NULL);
-                current.next = new Link<T>(current.next, v);
+                current->setNext(new Link<T>(current->getNext(), v));
             }
             k++;
         } else {
             throw new exception();
         }
-        return *this;
+        return this;
     }
     
     // ------------------------------------------------------------
@@ -114,18 +114,18 @@ public:
         T* r = NULL;
         if (!this->isEmpty()) {
             if (i == 0) {
-                r = first.info;
-                first = first.next;
+                r = first->getInfo();
+                first = first->getNext();
                 k--;
             } else if ((0 <= i) && (i < size())) {
                 Link<T>* current = first;
                 int p = 0;
-                while ((current.next != NULL) && (p < (i - 1))) {
-                    current = current.next;
+                while ((current->getNext() != NULL) && (p < (i - 1))) {
+                    current = current->getNext();
                     p++;
                 }
                 assert (current != NULL);
-                current.next = current.next.next;
+                current->setNext(current->getNext()->getNext());
                 k--;
             }
         }
@@ -138,8 +138,8 @@ public:
         stringstream s;
         Link<T>* current = first;
         while (current != NULL) {
-            s << current.info;
-            current = current.next;
+            s << current->getInfo();
+            current = current->getNext();
             if (current != NULL) {
                 s << ", ";
             }

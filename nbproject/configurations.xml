@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Array.h</itemPath>
       <itemPath>Collection.h</itemPath>
       <itemPath>Integer.h</itemPath>
       <itemPath>Link.h</itemPath>
@@ -42,6 +43,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Array.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Collection.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Integer.cpp" ex="false" tool="1" flavor2="0">
@@ -77,6 +80,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Array.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Collection.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Integer.cpp" ex="false" tool="1" flavor2="0">

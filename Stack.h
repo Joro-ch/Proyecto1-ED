@@ -13,30 +13,34 @@ public:
         v = new LinkedList<T>();
     }
     
+    virtual ~Stack()
+    {
+    }
+    
     // ------------------------------------------------------------
 
     bool isEmpty() {
-        return v.isEmpty();
+        return v->isEmpty();
     }
 
     int size() {
-        return v.size();
+        return v->size();
     }
 
     T* top() {
-        return v.get(0);
+        return v->get(0);
     }
 
     void push(T* e) {
         if (e != NULL) {
-            v.add(e);
+            v->add(e);
         } else {
             throw new exception();
         }
     }
 
     T* pop() {
-        return v.remove();
+        return v->remove();
     }
     
     // ------------------------------------------------------------
