@@ -13,12 +13,15 @@ public:
         this->v = new LinkedList<T>();
     }
     
-    Stack(Stack<T>* o) {
-        // this->v = new LinkedList<T>(o->getLista());
+    Stack(Stack<T>* s) {
+        *this = s;
     }
     
     virtual ~Stack()
     {
+        if(v) {
+            delete v;
+        }
     }
     
     // ------------------------------------------------------------
@@ -60,6 +63,20 @@ public:
     
     // ------------------------------------------------------------
 
+    Stack<T>* operator = (Stack<T>* s) {
+        this->v->clear();
+        this->v = s->getLista();
+        return this;
+    }
+    
+    bool operator == (Stack<T>* s) {
+        return true;
+    }
+    
+    bool operator != (Stack<T>* s) {
+        return !(this == s);
+    }
+    
 private:
     Collection<T>* v;
 };

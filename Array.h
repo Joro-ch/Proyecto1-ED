@@ -18,18 +18,14 @@ public:
         k = 0;
     }
     
-    Array(Array* o) {
-        t = o->capacity();
-        e = new T*[t];
-        
-        for(int i = 0; i < o->size(); i++)
-        {
-            e[i] = o->get(i); 
-        }
+    Array(Array<T>* a) {
+        this = a;
     }
     
     virtual ~Array(){
-        
+        if(e) {
+            this->clear();
+        }
     }
     
     // ------------------------------------------------------------
@@ -98,20 +94,18 @@ public:
     
     // ------------------------------------------------------------
     
-    T* remove() {
+    Collection<T>* remove() {
         return remove(size() - 1);
     }
     
-    T* remove(int i) {
-        T* r = NULL;
+    Collection<T>* remove(int i) {
         if ((0 <= i) && (i < size())) {
-            r = e[i];
             for (int j = i; j < (k - 1); j++) {
                 e[j] = e[j + 1];
             }
             k--;
         }
-        return r;
+        return this;
     }
     
     // ------------------------------------------------------------
@@ -125,6 +119,28 @@ public:
             s << get(i)->toString(); 
         }
         return s.str();
+    }
+    
+    // ------------------------------------------------------------
+    
+    Array<T>* operator = (Array<T>* a) {
+        this->clear();
+        this->t = a->capacity();
+        this->e = new T*[t];
+        
+        for(int i = 0; i < a->size(); i++)
+        {
+            this->e[i] = a->get(i); 
+        }
+        return this;
+    }
+    
+    bool operator == (Array<T>* a) {
+        return true;
+    }
+    
+    bool operator != (Array<T>* a) {
+        return !(this == a);
     }
     
 private:

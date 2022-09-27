@@ -29,8 +29,8 @@ public:
     
     // ------------------------------------------------------------
     
-    virtual T* remove() = 0;
-    virtual T* remove(int i) = 0;
+    virtual Collection<T>* remove() = 0;
+    virtual Collection<T>* remove(int i) = 0;
     
     // ------------------------------------------------------------
     

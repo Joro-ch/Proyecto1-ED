@@ -19,12 +19,14 @@ public:
         this->first = NULL;
     }
     
-    LinkedList(LinkedList<T>* o) {
-        this->k = o->getK();
-        this->first = o->getFirst();
+    LinkedList(LinkedList<T>* l) {
+        this = l;
     }
     
     virtual ~LinkedList() {
+        if (first) {
+            this->clear();
+        }
     }
     
     // ------------------------------------------------------------
@@ -38,6 +40,8 @@ public:
         this->k = k;
         return this;
     }
+    
+    // ------------------------------------------------------------
     
     Link<T>* getFirst(){
         return first;
@@ -128,30 +132,31 @@ public:
     
     // ------------------------------------------------------------
     
-    T* remove() {
+    Collection<T>* remove() {
         return remove(0);
     }
     
-    T* remove(int i) {
-        T* r = NULL;
+    Collection<T>* remove(int i) {
+        Link<T>* aux = first;
         if (!this->isEmpty()) {
             if (i == 0) {
-                r = first->getInfo();
+                aux = first;
                 first = first->getNext();
+                delete aux;
                 k--;
             } else if ((0 <= i) && (i < size())) {
-                Link<T>* current = first;
                 int p = 0;
-                while ((current->getNext() != NULL) && (p < (i - 1))) {
-                    current = current->getNext();
+                while ((aux->getNext() != NULL) && (p < (i - 1))) {
+                    aux = aux->getNext();
                     p++;
                 }
-                assert (current != NULL);
-                current->setNext(current->getNext()->getNext());
+                assert (aux != NULL);
+                aux->setNext(aux->getNext()->getNext());
+                delete aux;
                 k--;
             }
         }
-        return r;
+        return this;
     }
     
     // ------------------------------------------------------------
@@ -170,6 +175,21 @@ public:
     }
     
     // ------------------------------------------------------------
+    
+    LinkedList<T>* operator = (LinkedList<T>* l) {
+        this->clear();
+        this->setFirst(l->getFirst());
+        this->setK(l->getK());
+        return this;
+    }
+    
+    bool operator == (LinkedList<T>* l) {
+        return this;
+    }
+    
+    bool operator != (LinkedList<T>* l) {
+        return !(this == l);
+    }
     
 private:
     int k;

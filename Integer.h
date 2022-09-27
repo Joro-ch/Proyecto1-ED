@@ -40,18 +40,24 @@ public:
     Integer* operator * (Integer*);  
     Integer* operator / (Integer*);
     
+    // ------------------------------------------------------------
+    
     Integer* operator = (Integer*);
     Integer* operator += (Integer*);  
     Integer* operator -= (Integer*);  
     Integer* operator *= (Integer*); 
     Integer* operator /= (Integer*);
     
-    Integer* operator == (Integer*);
-    Integer* operator != (Integer*);  
-    Integer* operator < (Integer*);  
-    Integer* operator <= (Integer*); 
-    Integer* operator > (Integer*);
-    Integer* operator >= (Integer*);
+    // ------------------------------------------------------------
+    
+    bool operator == (Integer*);
+    bool operator != (Integer*);  
+    bool operator < (Integer*);  
+    bool operator <= (Integer*); 
+    bool operator > (Integer*);
+    bool operator >= (Integer*);
+    
+    // ------------------------------------------------------------
     
     Integer* operator << (Integer*); 
     

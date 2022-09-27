@@ -20,13 +20,22 @@ public:
     }
     
     Link(Link<T>* o) {
-        this->next = o->getNext();
-        this->info = o->getInfo();
+        this = o;
     }
+    
+    // ------------------------------------------------------------
     
     virtual ~Link()
     {
+        if(next) {
+            delete next;
+        }
+        if(info) {
+            delete info;
+        }
     }
+    
+    // ------------------------------------------------------------
     
     void setNext(Link<T>* next)
     {
@@ -37,6 +46,8 @@ public:
     {
         this->info = info;
     }
+    
+    // ------------------------------------------------------------
     
     Link<T>* getNext()
     {
@@ -49,6 +60,20 @@ public:
     }
     
     // ------------------------------------------------------------
+    
+    Link<T>* operator = (Link<T>* l){
+        this->setNext(l->getNext());
+        this->setInfo(l->getInfo());
+        return this;
+    }
+    
+    bool operator == (Link<T>* i) {
+        return false;
+    }
+    
+    bool operator != (Link<T>* i) {
+        return !(this == i);
+    }  
     
 private:
     Link<T>* next;
