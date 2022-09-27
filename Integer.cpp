@@ -172,5 +172,18 @@ Integer* Integer::parse(string numero) {
     }
 }
 string Integer::toString() {
-    return "";
+    stringstream s;
+    
+    Array<int>* auxA = new Array<int>();
+    
+    if (v) {
+        for(int i = 0; i < v->getLista()->size(); i++) {
+            auxA = *(v->getLista()->get(i));
+            for(int x = auxA->size(); x > 0; x++) {
+                s << auxA->get(x);
+            } 
+        } 
+    } 
+    
+    return s.str();
 }

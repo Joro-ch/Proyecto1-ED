@@ -61,6 +61,16 @@ public:
     
     // ------------------------------------------------------------
     
+    string toString() {
+        stringstream s;
+        if(info) {
+            s << info->toString();
+        }
+        return s.str();
+    }
+    
+    // ------------------------------------------------------------
+    
     Link<T>* operator = (Link<T>* l) {
         if(l) {
             this->setNext(l->getNext());

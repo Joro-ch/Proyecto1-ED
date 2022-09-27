@@ -117,9 +117,6 @@ public:
     string toString() { 
         stringstream s;
         for (int i = 0; i < size(); i++) {
-            if (i > 0) {
-                s << ", ";
-            }
             s << get(i)->toString(); 
         }
         return s.str();

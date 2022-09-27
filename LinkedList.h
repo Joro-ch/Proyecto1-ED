@@ -163,12 +163,11 @@ public:
     
     string toString() { 
         stringstream s;
-        Link<T>* current = first;
-        while (current != NULL) {
-            s << current->getInfo();
-            current = current->getNext();
-            if (current != NULL) {
-                s << ", ";
+        Link<T>* aux = first;
+        if(aux) {
+            while (aux) {
+                s << aux->getInfo();
+                aux = aux->getNext();
             }
         }
         return s.str();
