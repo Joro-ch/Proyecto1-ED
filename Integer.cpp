@@ -3,6 +3,11 @@
 Integer::Integer() {
     this->v = new Stack<Array<int>*>();
 }
+Integer::Integer(string numero) {
+    Integer();
+    parse(numero);
+}
+
 Integer::Integer(Integer* i) {
     *this = i;
 }
@@ -151,8 +156,20 @@ Integer* Integer::operator << (Integer*) {
     
 // ------------------------------------------------------------
     
-void Integer::parse() {
-
+Integer* Integer::parse(string numero) {
+    Array<int>* auxA = new Array<int>();
+    int digito = 0;
+    
+    for(int i = numero.size(); i > 0; i--) {
+        if(!auxA->isFull()) {
+            digito = Util::posiblesNumeros(numero[i]);
+            auxA->add(&digito);
+        }
+        else {
+            v->getLista()->add(new Array<int>*(auxA));
+            auxA->clear();
+        }
+    }
 }
 string Integer::toString() {
     return "";

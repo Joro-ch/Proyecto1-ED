@@ -2,6 +2,7 @@
 #define INTEGER_H
 #include"Stack.h"
 #include"Array.h"
+#include"Util.h"
 
 #define ZERO 0;
 #define ONE 1;
@@ -12,6 +13,7 @@ public:
     // ------------------------------------------------------------
     
     Integer();
+    Integer(string);
     Integer(Integer*);
     virtual ~Integer();
     
@@ -63,7 +65,7 @@ public:
     
     // ------------------------------------------------------------
     
-    void parse();
+    Integer* parse(string);
     string toString();
     
     // ------------------------------------------------------------

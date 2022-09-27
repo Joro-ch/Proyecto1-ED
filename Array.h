@@ -30,6 +30,10 @@ public:
     
     // ------------------------------------------------------------
     
+    bool isFull() {
+        return k == t;
+    }
+    
     int size(){
         return k;
     }
@@ -156,7 +160,7 @@ public:
     }
     
 private:
-    int DEFAULT_CAPACITY = 16;
+    int DEFAULT_CAPACITY = 5;
     int k;
     int t;
     T** e;
