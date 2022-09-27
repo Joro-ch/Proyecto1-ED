@@ -120,10 +120,15 @@ Integer* Integer::operator /= (Integer* divisor) {
 // ------------------------------------------------------------
     
 bool Integer::operator == (Integer* i) {
-    return true;
+    if(i) {
+        return this->v == i->getLista();
+    }
+    else {
+        throw new exception();
+    }
 }
 bool Integer::operator != (Integer* i) {
-    return true;
+    return !(this == i);
 }  
 bool Integer::operator < (Integer* i) {
     return true;

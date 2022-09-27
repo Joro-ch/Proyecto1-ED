@@ -61,14 +61,21 @@ public:
     
     // ------------------------------------------------------------
     
-    Link<T>* operator = (Link<T>* l){
-        this->setNext(l->getNext());
-        this->setInfo(l->getInfo());
+    Link<T>* operator = (Link<T>* l) {
+        if(l) {
+            this->setNext(l->getNext());
+            this->setInfo(l->getInfo());
+        }
         return this;
     }
     
-    bool operator == (Link<T>* i) {
-        return false;
+    bool operator == (T* i) {
+        if(i) {
+            return this->getInfo() == i;
+        }
+        else {
+            throw new exception();
+        }
     }
     
     bool operator != (Link<T>* i) {

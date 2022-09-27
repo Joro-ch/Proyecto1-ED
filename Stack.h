@@ -64,13 +64,20 @@ public:
     // ------------------------------------------------------------
 
     Stack<T>* operator = (Stack<T>* s) {
-        this->v->clear();
-        this->v = s->getLista();
+        if(s) {
+            this->v->clear();
+            this->v = s->getLista();
+        }
         return this;
     }
     
     bool operator == (Stack<T>* s) {
-        return true;
+        if(s) {
+            return v == s->getLista();
+        }
+        else {
+            throw new exception();
+        }
     }
     
     bool operator != (Stack<T>* s) {

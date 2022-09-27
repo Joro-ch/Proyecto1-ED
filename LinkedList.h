@@ -177,14 +177,27 @@ public:
     // ------------------------------------------------------------
     
     LinkedList<T>* operator = (LinkedList<T>* l) {
-        this->clear();
-        this->setFirst(l->getFirst());
-        this->setK(l->getK());
+        if (l) {
+            this->clear();
+            this->setFirst(l->getFirst());
+            this->setK(l->getK());
+        }
         return this;
     }
     
     bool operator == (LinkedList<T>* l) {
-        return this;
+        if(l && first && (k > 0)) {
+            Link<T>* aux = first;
+            for(int i = 0; i < k; i++) {
+                if(aux != l->get(i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else {
+            throw new exception();
+        }
     }
     
     bool operator != (LinkedList<T>* l) {

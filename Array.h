@@ -124,19 +124,31 @@ public:
     // ------------------------------------------------------------
     
     Array<T>* operator = (Array<T>* a) {
-        this->clear();
-        this->t = a->capacity();
-        this->e = new T*[t];
+        if(a) {
+            this->clear();
+            this->t = a->capacity();
+            this->e = new T*[t];
         
-        for(int i = 0; i < a->size(); i++)
-        {
-            this->e[i] = a->get(i); 
+            for(int i = 0; i < a->size(); i++)
+            {
+                this->e[i] = a->get(i); 
+            }
         }
         return this;
     }
     
     bool operator == (Array<T>* a) {
-        return true;
+        if(a) {
+            for(int i = 0; i < size(); i++) {
+                if (this->e[i] != a[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else {
+            throw new exception();
+        }
     }
     
     bool operator != (Array<T>* a) {
