@@ -159,7 +159,7 @@ public:
         Link<T>* aux = first;
         if(aux) {
             while (aux) {
-                s << aux->getInfo();
+                s << *aux->getInfo();
                 aux = aux->getNext();
             }
         }

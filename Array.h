@@ -127,7 +127,7 @@ public:
     string toString() { 
         stringstream s;
         for (int i = 0; i < size(); i++) {
-            s << get(i); 
+            s << *this->get(i); 
         }
         return s.str();
     }

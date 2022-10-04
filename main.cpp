@@ -6,21 +6,34 @@ using namespace std;
 
 int main() {
     
-    Array<int>* list = new Array<int>(5);
+//    LinkedList<Array<int>*>* list = new LinkedList<Array<int>*>();
+//    Array<int>* arr = new Array<int>(5); 
+//    
+//    int* x1 = new int(1);
+//    int* x2 = new int(2);
+//    int* x3 = new int(3);
+//    int* x4 = new int(4);
+//    
+//    arr->add(x1);
+//    arr->add(x2);
+//    arr->add(x3);
+//    arr->add(x4);
+//    
+//    list->add(&arr);
+//    
+//    cout << arr << endl;
+//    cout << list << endl;
     
-    int* x1 = new int(1);
-    int* x2 = new int(2);
-    int* x3 = new int(3);
-    int* x4 = new int(4);
+    Integer* i = NULL;
+    string numero = "";
     
-    list->add(x1);
-    list->add(x2);
-    list->add(x3);
-    list->add(x4);
+    cout << "Ingrese un numero: ";
+    cin >> numero;
     
-    cout << list;
+    i = new Integer(numero);
     
-    system("pause");
+    cout << i;
+    
     return 0;
 }
 
@@ -37,13 +50,5 @@ int main() {
  
     /////////////////////////////////////////////////
  
-    Integer* i = NULL;
-    string numero = "";
     
-    cout << "Ingrese un numero: ";
-    cin >> numero;
-    
-    i = new Integer(numero);
-    
-    cout << i;
  */
