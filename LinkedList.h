@@ -1,8 +1,6 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-#include<exception>
 #include<cassert>
-#include<sstream>
 #include"Link.h"
 #include"Collection.h"
 using namespace std;
@@ -26,17 +24,18 @@ public:
     virtual ~LinkedList() {
         if (first) {
             this->clear();
+            delete first;
         }
     }
     
     // ------------------------------------------------------------
     
-    LinkedList* setFirst(Link<T>* first){
+    LinkedList<T>* setFirst(Link<T>* first){
         this->first = first;
         return this;
     } 
     
-    LinkedList* setK(int k){
+    LinkedList<T>* setK(int k){
         this->k = k;
         return this;
     }
@@ -46,12 +45,6 @@ public:
     Link<T>* getFirst(){
         return first;
     }
-    
-    int getK(){
-        return k;
-    }
-    
-    // ------------------------------------------------------------
     
     int size() {
         return k;
@@ -175,11 +168,16 @@ public:
     
     // ------------------------------------------------------------
     
+    friend ostream& operator << (ostream& out,  LinkedList<T>* obj) {
+        out << obj->toString();
+        return out;
+    }
+    
     LinkedList<T>* operator = (LinkedList<T>* l) {
         if (l) {
             this->clear();
             this->setFirst(l->getFirst());
-            this->setK(l->getK());
+            this->setK(l->size());
         }
         return this;
     }

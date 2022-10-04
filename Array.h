@@ -1,7 +1,8 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 #include"Collection.h"
-
+#include <exception>
+#include <sstream>
 template<class T>
 
 class Array : public Collection<T> {
@@ -10,12 +11,20 @@ public:
         t = n;
         e = new T*[n];
         k = 0;
+        
+        for (int i = 0; i < t; i++) {
+            e[i] = NULL;
+        }
     }
     
     Array() {
         t = DEFAULT_CAPACITY;
         e = new T*[t];
         k = 0;
+        
+        for (int i = 0; i < t; i++) {
+            e[i] = NULL;
+        }
     }
     
     Array(Array<T>* a) {
@@ -25,6 +34,7 @@ public:
     virtual ~Array(){
         if(e) {
             this->clear();
+            delete[] e;
         }
     }
     
@@ -117,12 +127,17 @@ public:
     string toString() { 
         stringstream s;
         for (int i = 0; i < size(); i++) {
-            s << get(i)->toString(); 
+            s << get(i); 
         }
         return s.str();
     }
     
     // ------------------------------------------------------------
+    
+    friend ostream& operator << (ostream& out, Array<T>* obj) {
+        out << obj->toString();
+        return out;
+    }
     
     Array<T>* operator = (Array<T>* a) {
         if(a) {

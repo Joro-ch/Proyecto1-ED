@@ -1,6 +1,8 @@
 #ifndef LINK_H
 #define LINK_H
 #include <iostream>
+#include <sstream>
+#include<exception>
 using namespace std;
 
 template<class T>
@@ -37,14 +39,16 @@ public:
     
     // ------------------------------------------------------------
     
-    void setNext(Link<T>* next)
+    Link<T>* setNext(Link<T>* next)
     {
         this->next = next;
+        return this;
     }
     
-    void setInfo(T* info)
+    Link<T>* setInfo(T* info)
     {
         this->info = info;
+        return this;
     }
     
     // ------------------------------------------------------------
@@ -64,12 +68,17 @@ public:
     string toString() {
         stringstream s;
         if(info) {
-            s << info->toString();
+            s << info;
         }
         return s.str();
     }
     
     // ------------------------------------------------------------
+    
+    friend ostream& operator << (ostream& out, Link<T>* obj) {
+        out << obj->toString();
+        return out;
+    }
     
     Link<T>* operator = (Link<T>* l) {
         if(l) {

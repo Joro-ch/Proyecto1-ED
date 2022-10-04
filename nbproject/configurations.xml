@@ -9,7 +9,6 @@
       <itemPath>Integer.h</itemPath>
       <itemPath>Link.h</itemPath>
       <itemPath>LinkedList.h</itemPath>
-      <itemPath>Stack.h</itemPath>
       <itemPath>Util.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -57,8 +56,6 @@
       </item>
       <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Stack.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Util.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Util.h" ex="false" tool="3" flavor2="0">
@@ -97,8 +94,6 @@
       <item path="Link.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Stack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Util.cpp" ex="false" tool="1" flavor2="0">
       </item>

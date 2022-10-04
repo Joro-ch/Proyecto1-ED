@@ -6,22 +6,23 @@ using namespace std;
 
 int main() {
     
-    Integer* i = NULL;
-    string numero = "";
+    Array<int>* list = new Array<int>(5);
     
-    cout << "Ingrese un numero: ";
-    cin >> numero;
+    int* x1 = new int(1);
+    int* x2 = new int(2);
+    int* x3 = new int(3);
+    int* x4 = new int(4);
     
-    i = new Integer(numero);
+    list->add(x1);
+    list->add(x2);
+    list->add(x3);
+    list->add(x4);
     
-    cout << i->toString();
+    cout << list;
     
     system("pause");
     return 0;
 }
-
-
-
 
 /* Prueba para obtener los digitos de los numeros;
  
@@ -32,5 +33,17 @@ int main() {
     for(int i = 0; i < palabra.size(); i++) {
         cout << Util::posiblesNumeros(palabra[i]) << " - ";
     }
+
  
+    /////////////////////////////////////////////////
+ 
+    Integer* i = NULL;
+    string numero = "";
+    
+    cout << "Ingrese un numero: ";
+    cin >> numero;
+    
+    i = new Integer(numero);
+    
+    cout << i;
  */
