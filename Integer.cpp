@@ -1,7 +1,7 @@
 #include "Integer.h"
 
 Integer::Integer() {
-    this->v = new Stack<Array<int>*>();
+    this->v = new LinkedList<Array<int>*>();
 }
 Integer::Integer(string numero) {
     Integer();
@@ -26,7 +26,7 @@ Integer* Integer::setLista(Integer* v){
     return this;
 }
 
-Stack<Array<int>*>* Integer::getLista(){
+LinkedList<Array<int>*>* Integer::getLista(){
     return v;
 }
     
@@ -105,7 +105,7 @@ Integer* Integer::operator / (Integer* divisor) {
     
 Integer* Integer::operator = (Integer* i){
     if(i) {
-        this->v = new Stack<Array<int>*>(i->getLista());
+        this->v = i->getLista();
     }
     return this;
 }
@@ -166,24 +166,17 @@ Integer* Integer::parse(string numero) {
             auxA->add(&digito);
         }
         else {
-            v->getLista()->add(new Array<int>*(auxA));
+            v->add(new Array<int>*(auxA));
             auxA->clear();
         }
     }
+    return this;
 }
+
 string Integer::toString() {
     stringstream s;
-    
-    Array<int>* auxA = new Array<int>();
-    
     if (v) {
-        for(int i = 0; i < v->getLista()->size(); i++) {
-            auxA = *(v->getLista()->get(i));
-            for(int x = auxA->size(); x > 0; x++) {
-                s << auxA->get(x);
-            } 
-        } 
+        s << v->toString();
     } 
-    
     return s.str();
 }

@@ -1,6 +1,6 @@
 #ifndef INTEGER_H
 #define INTEGER_H
-#include"Stack.h"
+#include"LinkedList.h"
 #include"Array.h"
 #include"Util.h"
 
@@ -20,7 +20,7 @@ public:
     // ------------------------------------------------------------
     
     Integer* setLista(Integer*);
-    Stack<Array<int>*>* getLista();
+    LinkedList<Array<int>*>* getLista();
     
     // ------------------------------------------------------------
     
@@ -71,7 +71,7 @@ public:
     // ------------------------------------------------------------
     
 private:
-    Stack<Array<int>*>* v;
+    LinkedList<Array<int>*>* v;
 };
 
 #endif

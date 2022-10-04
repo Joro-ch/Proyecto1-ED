@@ -6,17 +6,14 @@ using namespace std;
 
 int main() {
     
-    Integer* i = NULL;
-    string numero = "";
+    Array<int>* x = new Array<int>();
     
-    cout << "Ingrese un numero: ";
-    cin >> numero;
-    
-    i = new Integer(numero);
-    
-    cout << i->toString();
-    
-    system("pause");
+    int y = 100;
+
+    x->add(&y);
+
+    cout << &x << endl;
+
     return 0;
 }
 

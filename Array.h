@@ -10,12 +10,20 @@ public:
         t = n;
         e = new T*[n];
         k = 0;
+        
+        for (int i = 0; i < t; i++) {
+            e[i] = NULL;
+        }
     }
     
     Array() {
         t = DEFAULT_CAPACITY;
         e = new T*[t];
         k = 0;
+        
+        for (int i = 0; i < t; i++) {
+            e[i] = NULL;
+        }
     }
     
     Array(Array<T>* a) {
@@ -26,6 +34,7 @@ public:
         if(e) {
             this->clear();
         }
+        delete[] e;
     }
     
     // ------------------------------------------------------------

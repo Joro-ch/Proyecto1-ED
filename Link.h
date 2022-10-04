@@ -1,6 +1,8 @@
 #ifndef LINK_H
 #define LINK_H
-#include <iostream>
+#include<iostream>
+#include<sstream>
+#include<exception>
 using namespace std;
 
 template<class T>

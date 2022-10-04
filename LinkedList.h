@@ -1,10 +1,8 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-#include<exception>
 #include<cassert>
-#include<sstream>
-#include"Link.h"
 #include"Collection.h"
+#include"Link.h"
 using namespace std;
 
 template<class T>
@@ -23,32 +21,25 @@ public:
         this = l;
     }
     
+    // ------------------------------------------------------------
+    
     virtual ~LinkedList() {
         if (first) {
             this->clear();
+            delete first;
         }
     }
     
     // ------------------------------------------------------------
     
-    LinkedList* setFirst(Link<T>* first){
+    LinkedList<T>* setFirst(Link<T>* first){
         this->first = first;
         return this;
     } 
     
-    LinkedList* setK(int k){
+    LinkedList<T>* setK(int k){
         this->k = k;
         return this;
-    }
-    
-    // ------------------------------------------------------------
-    
-    Link<T>* getFirst(){
-        return first;
-    }
-    
-    int getK(){
-        return k;
     }
     
     // ------------------------------------------------------------
@@ -72,6 +63,10 @@ public:
             throw new exception();
         }
         return r;
+    }
+    
+    Link<T>* getFirst(){
+        return first;
     }
     
     // ------------------------------------------------------------
@@ -179,7 +174,7 @@ public:
         if (l) {
             this->clear();
             this->setFirst(l->getFirst());
-            this->setK(l->getK());
+            this->setK(l->size());
         }
         return this;
     }
