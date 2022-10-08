@@ -1,7 +1,7 @@
 #ifndef LINK_H
 #define LINK_H
-#include <iostream>
-#include <sstream>
+#include<iostream>
+#include<sstream>
 #include<exception>
 using namespace std;
 
@@ -67,8 +67,16 @@ public:
     
     string toString() {
         stringstream s;
-        if(info) {
-            s << info;
+        try {
+            if(info) {
+                s << info->toString();
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
         return s.str();
     }
@@ -76,30 +84,63 @@ public:
     // ------------------------------------------------------------
     
     friend ostream& operator << (ostream& out, Link<T>* obj) {
-        out << obj->toString();
+        try {
+            if(obj) {
+                out << obj->toString();
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
+        }
         return out;
     }
     
     Link<T>* operator = (Link<T>* l) {
-        if(l) {
-            this->setNext(l->getNext());
-            this->setInfo(l->getInfo());
+        try {
+            if(l) {
+                this->setNext(l->getNext());
+                this->setInfo(l->getInfo());
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
         return this;
     }
     
     bool operator == (T* i) {
-        if(i) {
-            return this->getInfo() == i;
+        try {
+            if(i) {
+                return this->getInfo() == i;
+            }
+            else {
+                throw new exception();
+            }
         }
-        else {
-            throw new exception();
+            catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
     }
     
     bool operator != (Link<T>* i) {
-        return !(this == i);
-    }  
+        try {
+            if (i) {
+                return !(this == i);
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!"; 
+        }
+    }
     
 private:
     Link<T>* next;
