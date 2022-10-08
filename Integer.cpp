@@ -329,7 +329,7 @@ Integer* Integer::parse(string numero) {
 
 string Integer::toString() {
     stringstream s;
-     s << v->toString();
+    s << v->toString();
     return s.str();
 }
 

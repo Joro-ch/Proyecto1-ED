@@ -69,7 +69,7 @@ public:
         stringstream s;
         try {
             if(info) {
-                s << info->toString();
+                s << info;
             }
             else {
                 throw new exception();

@@ -187,6 +187,21 @@ public:
     
     // ------------------------------------------------------------
     
+    friend ostream& operator << (ostream& out, Array<T>* obj) {
+        try {
+            if (obj) {
+                out << obj->toString();
+            }
+            else {
+                throw new exception;
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido";
+        }
+        return out;
+    }
+    
     Array<T>* operator = (Array<T>* a) {
         try {
             if (a) {
