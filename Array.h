@@ -1,6 +1,8 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 #include"Collection.h"
+#include<sstream>
+#include<exception>
 
 template<class T>
 
@@ -33,8 +35,8 @@ public:
     virtual ~Array(){
         if(e) {
             this->clear();
+            delete[] e;
         }
-        delete[] e;
     }
     
     // ------------------------------------------------------------
@@ -52,55 +54,89 @@ public:
     }
     
     T* get(int i) {
-        if ((0 <= i) && (i < size())) {
-            return e[i];
-        } else {
-            throw new exception();
+        try {
+            if ((0 <= i) && (i < size())) {
+                return e[i];
+            } 
+            else {
+                throw new exception();
+            }
         }
+        catch(exception ex) {
+            cout << "Posicion Invalida o contenedor lleno!!";
+        } 
+    }
+    
+    static int getDefaultCapacity() {
+        return DEFAULT_CAPACITY;
     }
 
     // ------------------------------------------------------------
     
     Collection<T>* set(int i, T* v) {
-        if ((0 <= i) && (i < size())) {
-            e[i] = v;
-        } else {
-            throw new exception();
+        try {
+            if ((0 <= i) && (i < size())) {
+                e[i] = v;
+            } 
+            else {
+                throw new exception();
+            }
+        }
+        catch(exception ex) {
+            cout << "Elemento Invalido o contenedor lleno!!";
         }
         return this;
     }
     
     Collection<T>* swap(int i, int j) {
-        bool f = (0 <= i) && (i < size()) && (0 <= j) && (j < size());
-        if (f) {
-            T* temp = e[i];
-            e[i] = e[j];
-            e[j] = temp;
-            return this;
-        } else {
-            throw new exception();
+        try {
+            bool f = (0 <= i) && (i < size()) && (0 <= j) && (j < size());
+            if (f) {
+                T* temp = e[i];
+                e[i] = e[j];
+                e[j] = temp;
+            } 
+            else {
+                throw new exception();
+            }
         }
+        catch (exception ex) {
+            cout << "Elemento Invalido";
+        }
+        return this;
     }
     
     Collection<T>* add(T* v) {
-        if ((v != NULL) && (size() < capacity())) {
-            e[k++] = v;
-        } else {
-            throw new exception();
+        try {
+            if ((v != NULL) && (size() < capacity())) {
+                e[k++] = v;
+            } 
+            else {
+                throw new exception();
+            }
+        }
+        catch(exception ex) {
+            cout << "Elemento invalido o contenedor lleno!!";
         }
         return this;
     }
     
     Collection<T>* add(int i, T* v) {
-        if ((v != NULL) && (size() < capacity())) {
-            int m = ((0 <= i) && (i < size())) ? i : size();
-            k++;
-            for (int j = k - 1; m < j; j--) {
-                e[j] = e[j - 1];
+        try {
+            if ((v != NULL) && (size() < capacity())) {
+                int m = ((0 <= i) && (i < size())) ? i : size();
+                k++;
+                for (int j = k - 1; m < j; j--) {
+                    e[j] = e[j - 1];
+                }
+                e[m] = v;
+            } 
+            else {
+                throw new exception();
             }
-            e[m] = v;
-        } else {
-            throw new exception();
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido o contenedor lleno!!";
         }
         return this;
     }
@@ -112,21 +148,39 @@ public:
     }
     
     Collection<T>* remove(int i) {
-        if ((0 <= i) && (i < size())) {
-            for (int j = i; j < (k - 1); j++) {
-                e[j] = e[j + 1];
+        try {
+            if ((0 <= i) && (i < size())) {
+                for (int j = i; j < (k - 1); j++) {
+                    e[j] = e[j + 1];
+                }
+                k--;
             }
-            k--;
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Posicion Invalida o contenedor lleno!!";
         }
         return this;
     }
     
     // ------------------------------------------------------------
     
-    string toString() { 
+    string toString() {
         stringstream s;
-        for (int i = 0; i < size(); i++) {
-            s << get(i)->toString(); 
+        try {
+            for (int i = 0; i < size(); i++) {
+                if (*this->get(i)) {
+                    s << *this->get(i);
+                }
+                else {
+                    throw new exception();
+                }
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
         return s.str();
     }
@@ -134,39 +188,62 @@ public:
     // ------------------------------------------------------------
     
     Array<T>* operator = (Array<T>* a) {
-        if(a) {
-            this->clear();
-            this->t = a->capacity();
-            this->e = new T*[t];
+        try {
+            if (a) {
+                this->clear();
+                this->t = a->capacity();
+                this->e = new T*[t];
         
-            for(int i = 0; i < a->size(); i++)
-            {
-                this->e[i] = a->get(i); 
+                for(int i = 0; i < a->size(); i++)
+                {
+                     this->e[i] = a->get(i); 
+                }
             }
+            else {
+                throw new exception();
+            }
+        }
+        catch(exception ex) {
+            cout << "Elemento invalido!!";
         }
         return this;
     }
     
     bool operator == (Array<T>* a) {
-        if(a) {
-            for(int i = 0; i < size(); i++) {
-                if (this->e[i] != a[i]) {
-                    return false;
+        try {
+            if(a) {
+                for(int i = 0; i < size(); i++) {
+                    if (this->e[i] != a[i]) {
+                        return false;
+                    }
                 }
+                return true;
             }
-            return true;
+            else {
+                throw new exception();
+            }
         }
-        else {
-            throw new exception();
+        catch (exception ex) {
+            cout << "Elemento invalido!!"; 
         }
     }
     
     bool operator != (Array<T>* a) {
-        return !(this == a);
+        try {
+            if (a) {
+                return !(this == a);
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!"; 
+        }
     }
     
 private:
-    int DEFAULT_CAPACITY = 5;
+    const static int DEFAULT_CAPACITY = 5;
     int k;
     int t;
     T** e;

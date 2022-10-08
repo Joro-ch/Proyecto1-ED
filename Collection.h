@@ -1,7 +1,6 @@
 #ifndef COLLECTION_H
 #define COLLECTION_H
 #include <iostream>
-#include <sstream>
 using namespace std;
 
 template<class T>

@@ -39,14 +39,16 @@ public:
     
     // ------------------------------------------------------------
     
-    void setNext(Link<T>* next)
+    Link<T>* setNext(Link<T>* next)
     {
         this->next = next;
+        return this;
     }
     
-    void setInfo(T* info)
+    Link<T>* setInfo(T* info)
     {
         this->info = info;
+        return this;
     }
     
     // ------------------------------------------------------------
@@ -65,34 +67,80 @@ public:
     
     string toString() {
         stringstream s;
-        if(info) {
-            s << info->toString();
+        try {
+            if(info) {
+                s << info->toString();
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
         return s.str();
     }
     
     // ------------------------------------------------------------
     
+    friend ostream& operator << (ostream& out, Link<T>* obj) {
+        try {
+            if(obj) {
+                out << obj->toString();
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
+        }
+        return out;
+    }
+    
     Link<T>* operator = (Link<T>* l) {
-        if(l) {
-            this->setNext(l->getNext());
-            this->setInfo(l->getInfo());
+        try {
+            if(l) {
+                this->setNext(l->getNext());
+                this->setInfo(l->getInfo());
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
         return this;
     }
     
     bool operator == (T* i) {
-        if(i) {
-            return this->getInfo() == i;
+        try {
+            if(i) {
+                return this->getInfo() == i;
+            }
+            else {
+                throw new exception();
+            }
         }
-        else {
-            throw new exception();
+            catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
     }
     
     bool operator != (Link<T>* i) {
-        return !(this == i);
-    }  
+        try {
+            if (i) {
+                return !(this == i);
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!"; 
+        }
+    }
     
 private:
     Link<T>* next;

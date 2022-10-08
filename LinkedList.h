@@ -44,58 +44,76 @@ public:
     
     // ------------------------------------------------------------
     
+    Link<T>* getFirst() {
+        return first;
+    }
+    
     int size() {
         return k;
     }
     
     T* get(int i) {
         T* r = NULL;
-        if ((0 <= i) && (i < size())) {
-            Link<T>* current = first;
-            int p = 0;
-            while ((current != NULL) && (p < i)) {
-                current = current->getNext();
-                p++;
+        try {
+            if ((0 <= i) && (i < size())) {
+                Link<T>* current = first;
+                int p = 0;
+                while ((current != NULL) && (p < i)) {
+                    current = current->getNext();
+                    p++;
+                }
+                assert (current != NULL);
+                r = current->getInfo();
+            }   
+            else {
+                throw new exception();
             }
-            assert (current != NULL);
-            r = current->getInfo();
-        } else {
-            throw new exception();
+        }
+        catch (exception ex) {
+            cout << "Posicion invalida o contenedor lleno";
         }
         return r;
-    }
-    
-    Link<T>* getFirst(){
-        return first;
     }
     
     // ------------------------------------------------------------
     
     Collection<T>* set(int i, T* v) { 
-        if ((0 <= i) && (i < size())) {
-            Link<T>* current = first;
-            int p = 0;
-            while ((current != NULL) && (p < i)) {
-                current = current->getNext();
-                p++;
+        try {
+            if ((0 <= i) && (i < size())) {
+                Link<T>* current = first;
+                int p = 0;
+                while ((current != NULL) && (p < i)) {
+                    current = current->getNext();
+                    p++;
+                }
+                assert (current != NULL);
+                current->setInfo(v);
+                return this;
+            } 
+            else {
+                throw new exception();
             }
-            assert (current != NULL);
-            current->setInfo(v);
-            return this;
-        } else {
-            throw new exception();
+        }
+        catch (exception ex) {
+            cout << "Posicion invalida o contenedor lleno";
         }
     }
     
     Collection<T>* swap(int i, int j) {
-        if (((0 <= i) && (i < size())) && ((0 <= j) && (j < size()))) {
-            T* o1 = get(i);
-            T* o2 = get(j);
-            set(i, o2);
-            set(j, o1);
-            return this;
-        } else {
-            throw new exception();
+        try {
+            if (((0 <= i) && (i < size())) && ((0 <= j) && (j < size()))) {
+                T* o1 = get(i);
+                T* o2 = get(j);
+                set(i, o2);
+                set(j, o1);
+                return this;
+            } 
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Posicion invalida o contenedor lleno";
         }
     }
     
@@ -104,23 +122,30 @@ public:
     }
     
     Collection<T>* add(int i, T* v) {
-        if (v != NULL) {
-            int m = ((0 <= i) && (i < size())) ? i : size();
-            if (m == 0) {
-                first = new Link<T>(first, v);
-            } else {
-                Link<T>* current = first;
-                int p = 0;
-                while ((current != NULL) && (p < (m - 1))) {
-                    current = current->getNext();
-                    p++;
+        try {
+            if (v != NULL) {
+                int m = ((0 <= i) && (i < size())) ? i : size();
+                if (m == 0) {
+                    first = new Link<T>(first, v);
+                }   
+                else {
+                    Link<T>* current = first;
+                    int p = 0;
+                    while ((current != NULL) && (p < (m - 1))) {
+                        current = current->getNext();
+                        p++;
+                    }
+                    assert (current != NULL);
+                    current->setNext(new Link<T>(current->getNext(), v));
                 }
-                assert (current != NULL);
-                current->setNext(new Link<T>(current->getNext(), v));
+                k++;
+            }    
+            else {
+                throw new exception();
             }
-            k++;
-        } else {
-            throw new exception();
+        }
+        catch (exception ex) {
+            cout << "Posicion invalida, contenedor lleno o elemento invalido";
         }
         return this;
     }
@@ -158,44 +183,77 @@ public:
     
     string toString() { 
         stringstream s;
-        Link<T>* aux = first;
-        if(aux) {
-            while (aux) {
-                s << aux->getInfo();
-                aux = aux->getNext();
+        try {
+            Link<T>* aux = first;
+            if(aux) {
+                while (aux) {
+                    s << aux->getInfo();
+                    aux = aux->getNext();
+                }
+            }
+            else {
+                throw new exception();
             }
         }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
+        }
+        
         return s.str();
     }
     
     // ------------------------------------------------------------
     
     LinkedList<T>* operator = (LinkedList<T>* l) {
-        if (l) {
-            this->clear();
-            this->setFirst(l->getFirst());
-            this->setK(l->size());
+        try {
+            if (l) {
+                this->clear();
+                this->setFirst(l->getFirst());
+                this->setK(l->size());
+            }
+            else {
+                throw new exception();
+            }
         }
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
+        }
+        
         return this;
     }
     
     bool operator == (LinkedList<T>* l) {
-        if(l && first && (k > 0)) {
-            Link<T>* aux = first;
-            for(int i = 0; i < k; i++) {
-                if(aux != l->get(i)) {
-                    return false;
+        try {
+            if(l && first && (k > 0)) {
+                Link<T>* aux = first;
+                for(int i = 0; i < k; i++) {
+                    if(aux != l->get(i)) {
+                     return false;
+                    }
                 }
+                return true;
             }
-            return true;
+            else {
+                throw new exception();
+            }
         }
-        else {
-            throw new exception();
+        catch (exception ex) {
+            cout << "Elemento invalido!!";
         }
     }
     
     bool operator != (LinkedList<T>* l) {
-        return !(this == l);
+        try {
+            if (l) {
+                return !(this == l);
+            }
+            else {
+                throw new exception();
+            }
+        }
+        catch (exception ex) {
+            cout << "Elemento invalido!!"; 
+        }
     }
     
 private:
