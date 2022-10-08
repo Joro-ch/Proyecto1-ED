@@ -62,8 +62,8 @@ public:
                 throw new exception();
             }
         }
-        catch(exception ex) {
-            cout << "Posicion Invalida o contenedor lleno!!";
+        catch(...) {
+            cout << "Posicion Invalida o contenedor lleno!!" << endl << endl;
         } 
     }
     
@@ -82,8 +82,8 @@ public:
                 throw new exception();
             }
         }
-        catch(exception ex) {
-            cout << "Elemento Invalido o contenedor lleno!!";
+        catch(...) {
+            cout << "Elemento Invalido o contenedor lleno!!" << endl << endl;
         }
         return this;
     }
@@ -100,8 +100,8 @@ public:
                 throw new exception();
             }
         }
-        catch (exception ex) {
-            cout << "Elemento Invalido";
+        catch (...) {
+            cout << "Elemento Invalido" << endl << endl;
         }
         return this;
     }
@@ -115,8 +115,8 @@ public:
                 throw new exception();
             }
         }
-        catch(exception ex) {
-            cout << "Elemento invalido o contenedor lleno!!";
+        catch(...) {
+            cout << "Elemento invalido o contenedor lleno!!" << endl << endl;
         }
         return this;
     }
@@ -135,8 +135,8 @@ public:
                 throw new exception();
             }
         }
-        catch (exception ex) {
-            cout << "Elemento invalido o contenedor lleno!!";
+        catch (...) {
+            cout << "Elemento invalido o contenedor lleno!!" << endl << endl;
         }
         return this;
     }
@@ -159,8 +159,8 @@ public:
                 throw new exception();
             }
         }
-        catch (exception ex) {
-            cout << "Posicion Invalida o contenedor lleno!!";
+        catch (...) {
+            cout << "Posicion Invalida o contenedor lleno!!" << endl << endl;
         }
         return this;
     }
@@ -179,8 +179,8 @@ public:
                 }
             }
         }
-        catch (exception ex) {
-            cout << "Elemento invalido!!";
+        catch (...) {
+            cout << "Elemento invalido!!" << endl << endl;
         }
         return s.str();
     }
@@ -196,8 +196,8 @@ public:
                 throw new exception;
             }
         }
-        catch (exception ex) {
-            cout << "Elemento invalido";
+        catch (...) {
+            cout << "Elemento invalido" << endl << endl;
         }
         return out;
     }
@@ -218,8 +218,8 @@ public:
                 throw new exception();
             }
         }
-        catch(exception ex) {
-            cout << "Elemento invalido!!";
+        catch(...) {
+            cout << "Elemento invalido!!" << endl << endl;
         }
         return this;
     }
@@ -238,8 +238,8 @@ public:
                 throw new exception();
             }
         }
-        catch (exception ex) {
-            cout << "Elemento invalido!!"; 
+        catch (...) {
+            cout << "Elemento invalido!!" << endl << endl;
         }
     }
     
@@ -252,8 +252,8 @@ public:
                 throw new exception();
             }
         }
-        catch (exception ex) {
-            cout << "Elemento invalido!!"; 
+        catch (...) {
+            cout << "Elemento invalido!!" << endl << endl;
         }
     }
     

@@ -30,8 +30,8 @@ Integer* Integer::setLista(Integer* v) {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
     return this;
 }
@@ -58,8 +58,8 @@ Integer* Integer::sumar(Integer* sumando) {
     string aux1 = Util::invertirCadena(this->cadena);
     string aux2 = Util::invertirCadena(sumando->getCadena());
     string s = "";
-    int tam1 = aux1.length();
-    int tam2 = aux2.length();
+    int tam1 = (int)aux1.length();
+    int tam2 = (int)aux2.length();
     int tamMaximo = Util::tamMaximo(tam1, tam2);
     int suma = 0;
     int acarreo = 0;
@@ -69,10 +69,10 @@ Integer* Integer::sumar(Integer* sumando) {
     // ----------------------------------------------------------
 
     for (i = tam1; i < tamMaximo; i++) {
-        aux1[i] = '0';
+        aux1 += '0';
     }
     for (i = tam2; i < tamMaximo; i++) {
-        aux2[i] = '0';
+        aux2 += '0';
     }
 
     // Sumando
@@ -85,7 +85,7 @@ Integer* Integer::sumar(Integer* sumando) {
             acarreo = 1;
             suma -= 10;
         }
-        s[i] = suma + '0';
+        s += suma + '0';
     }
 
     // Acarreo
@@ -117,8 +117,8 @@ Integer* Integer::restar(Integer* sustraendo) {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
 }
 Integer* Integer::multiplicar(Integer* multiplicador) {
@@ -135,8 +135,8 @@ Integer* Integer::multiplicar(Integer* multiplicador) {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
 }
 Integer* Integer::dividir(Integer* divisor) {
@@ -153,8 +153,8 @@ Integer* Integer::dividir(Integer* divisor) {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
 }
 
@@ -173,8 +173,8 @@ Integer* Integer::funcionFactorial() {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
 }
 Integer* Integer::Fibonacci() {
@@ -190,8 +190,8 @@ Integer* Integer::Fibonacci() {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
 }
 Integer* Integer::combinaciones() {
@@ -207,8 +207,8 @@ Integer* Integer::combinaciones() {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
 }
 
@@ -240,8 +240,8 @@ Integer* Integer::operator = (Integer* i) {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido";
+    catch (...) {
+        cout << "Elemento invalido" << endl << endl;
     }
     return this;
 }
@@ -269,8 +269,8 @@ bool Integer::operator == (Integer* i) {
             throw new exception();
         }
     }
-    catch (exception ex) {
-        cout << "Elemento invalido!!";
+    catch (...) {
+        cout << "Elemento invalido!!" << endl << endl;
     }
 }
 bool Integer::operator != (Integer* i) {

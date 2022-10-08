@@ -6,8 +6,8 @@ using namespace std;
 
 int main() {
 
-    Integer* i = new Integer("12345");
-    Integer* j = new Integer("12345");
+    Integer* i = new Integer("123456789");
+    Integer* j = new Integer("123456789");
 
     cout << i->sumar(j) << endl << endl;
 
